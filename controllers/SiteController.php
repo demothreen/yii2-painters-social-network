@@ -3,7 +3,6 @@
 namespace app\controllers;
 
 use app\models\Profile;
-use app\models\UserProfile;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -13,8 +12,17 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\SignupForm;
 
+/**
+ * Основной контроллер сайта
+ * Class SiteController
+ * @package app\controllers
+ */
 class SiteController extends Controller
 {
+    /**
+     * Отключить CSRF проверку
+     */
+    public $enableCsrfValidation = false;
     /**
      * {@inheritdoc}
      */
@@ -79,14 +87,17 @@ class SiteController extends Controller
         }
 
         $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+        if ($model->load(Yii::$app->request->post(), '') && $model->login()) {
+            return $this->goBack();
+        } else {
+            Yii::$app->session->addFlash('error', 'Не верное имя пользователя или пароль');
             return $this->goBack();
         }
 
-        $model->password = '';
-        return $this->renderPartial('login', [
-            'model' => $model,
-        ]);
+//        $model->password = '';
+//        return $this->renderPartial('login', [
+//            'model' => $model,
+//        ]);
     }
 
     /**

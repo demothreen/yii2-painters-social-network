@@ -2,12 +2,7 @@
 
 /* @var $this yii\web\View */
 
-use app\widgets\Alert;
-use yii\bootstrap\Modal;
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use yii\helpers\Url;
 
@@ -35,9 +30,8 @@ $this->title = 'Painters Social Network';
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
 
-<!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.php"><?= $this->title ?></a>
+    <a class="navbar-brand" href="/"><?= $this->title ?></a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -46,7 +40,7 @@ $this->title = 'Painters Social Network';
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
             <li class="nav-item" data-toggle="tooltip">
-                <a class="nav-link" href="<?= Url::to(['site/index']) ?>">
+                <a class="nav-link" href="/">
                     <i class="fa fa-fw fa-home"></i>
                     <span class="nav-link-text">Home</span>
                 </a>
@@ -99,11 +93,11 @@ $this->title = 'Painters Social Network';
         <?php else : ?>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= $this->render('@app/views/site/modals/modal') ?>" data-method="post">
+                    <a class="nav-link" data-toggle="modal" data-target="#signupModal">
                         <i class="fa fa-fw fa-sign-in"></i>Sign up</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= Url::to(['site/login']) ?>" data-method="post">
+                    <a class="nav-link" data-toggle="modal" data-target="#loginModal">
                         <i class="fa fa-fw fa-sign-in"></i>Login</a>
                 </li>
             </ul>
@@ -111,14 +105,8 @@ $this->title = 'Painters Social Network';
     </div>
 </nav>
 
-
-
-
 <div class="content-wrapper">
-
     <?= $content; ?>
-
-    <!-- /.content-wrapper-->
     <footer class="sticky-footer">
         <div class="container">
             <div class="text-center">
@@ -126,46 +114,62 @@ $this->title = 'Painters Social Network';
             </div>
         </div>
     </footer>
-    <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fa fa-angle-up"></i>
     </a>
-    <!-- Logout Modal-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">You make me sad :(</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="<?= Url::to(['site/logout']) ?>" data-method="post">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
 </body>
 <?php $this->endBody() ?>
 </html>
-
 <?php $this->endPage() ?>
 
+<div class="modal fade" id="loginModal" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <form class="modal-content animate" action="site/login" method="post">
+            <div class="container-form">
+                <label for="username"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="username" required>
+                <label for="password"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="password" required>
+                <button type="submit">Login</button>
+                <label>
+                    <input type="checkbox" checked="checked" name="rememberMe"> Remember me
+                </label>
+            </div>
+            <div class="container-form-footer">
+                <button class="cancelbtn" type="button" data-dismiss="modal">Cancel</button>
+                <span class="psw">Forgot <a href="#">password?</a></span>
+            </div>
+        </form>
+    </div>
+</div>
 
-<?php
-//todo: создать модалку для login
-Modal::begin([
-    'header' => '<h4>Destination</h4>',
-    'id'     => 'model',
-    'size'   => 'model-lg',
-]);
+<div class="modal fade" id="signupModal" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content animate">
+            Sign Up Modal in progress...
+        </div>
+    </div>
+</div>
 
-echo "<div id='modelContent'></div>";
-
-Modal::end();
+<div class="modal fade" id="exampleModal" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">You make me sad :(</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" href="<?= Url::to(['site/logout']) ?>" data-method="post">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
