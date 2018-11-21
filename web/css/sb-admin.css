@@ -427,7 +427,7 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
     color: rgba(0, 0, 0, 0.5);
 }
 
-#loginModal, #signupModal {
+#loginModal, #signupModal, #logout {
     z-index: 10000;
 }
 

@@ -85,8 +85,9 @@ class SiteController extends Controller
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
-
         $model = new LoginForm();
+        $model->username = $_POST['username'];
+        $model->password = $_POST['password'];
         if ($model->load(Yii::$app->request->post(), '') && $model->login()) {
             return $this->goBack();
         } else {

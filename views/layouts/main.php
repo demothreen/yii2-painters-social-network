@@ -85,7 +85,7 @@ $this->title = 'Painters Social Network';
         <?php if (!Yii::$app->user->isGuest): ?>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                    <a class="nav-link" data-toggle="modal" data-target="#logout">
                         <i class="fa fa-fw fa-sign-out"></i>Logout
                         (<?= Yii::$app->user->identity->username ?>) </a>
                 </li>
@@ -155,20 +155,17 @@ $this->title = 'Painters Social Network';
     </div>
 </div>
 
-<div class="modal fade" id="exampleModal" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="logout" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
             </div>
             <div class="modal-body">You make me sad :(</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="<?= Url::to(['site/logout']) ?>" data-method="post">Logout</a>
+                <button class="btn btn-primary" href="<?= Url::to(['site/logout']) ?>" data-method="post">Logout</button>
             </div>
         </div>
     </div>
