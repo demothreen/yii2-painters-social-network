@@ -468,7 +468,8 @@ button:hover {
 }
 
 .container-form-footer {
-    background-color: #f1f1f1
+    padding: 16px;
+    background-color: #f1f1f1;
 }
 
 span.psw {
