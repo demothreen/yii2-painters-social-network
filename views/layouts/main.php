@@ -55,7 +55,7 @@ $this->title = 'Painters Social Network';
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents"
                    data-parent="#exampleAccordion">
                     <i class="fa fa-fw fa-wrench"></i>
-                    <span class="nav-link-text">Just do it</span>
+                    <span class="nav-link-text">My pictures</span>
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseComponents">
                     <li>
@@ -87,7 +87,7 @@ $this->title = 'Painters Social Network';
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="modal" data-target="#logout">
                         <i class="fa fa-fw fa-sign-out"></i>Logout
-                        (<?= Yii::$app->user->identity->username ?>) </a>
+                        ( <?= Yii::$app->user->identity->username ?> ) </a>
                 </li>
             </ul>
         <?php else : ?>

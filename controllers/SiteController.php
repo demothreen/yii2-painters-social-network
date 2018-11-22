@@ -23,6 +23,7 @@ class SiteController extends Controller
      * Отключить CSRF проверку
      */
     public $enableCsrfValidation = false;
+
     /**
      * {@inheritdoc}
      */
@@ -86,19 +87,12 @@ class SiteController extends Controller
             return $this->goHome();
         }
         $model = new LoginForm();
-        $model->username = $_POST['username'];
-        $model->password = $_POST['password'];
         if ($model->load(Yii::$app->request->post(), '') && $model->login()) {
             return $this->goBack();
-        } else {
-            Yii::$app->session->addFlash('error', 'Не верное имя пользователя или пароль');
-            return $this->goBack();
         }
-
-//        $model->password = '';
-//        return $this->renderPartial('login', [
-//            'model' => $model,
-//        ]);
+        //todo: вывести ошибку
+        Yii::$app->session->addFlash('error', 'Не верное имя пользователя или пароль');
+        return $this->goBack();
     }
 
     /**
@@ -111,34 +105,6 @@ class SiteController extends Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
-    }
-
-    /**
-     * Displays contact page.
-     *
-     * @return Response|string
-     */
-    public function actionContact()
-    {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
-            return $this->refresh();
-        }
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
-    public function actionAbout()
-    {
-        return $this->render('about');
     }
 
     public function actionSignup()
@@ -160,7 +126,6 @@ class SiteController extends Controller
 
     public function actionProfile()
     {
-        var_dump(Yii::$app->request->post());
         $model = new Profile();
 
         if ($model->validate()) {

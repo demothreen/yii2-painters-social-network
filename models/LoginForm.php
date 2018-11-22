@@ -19,6 +19,15 @@ class LoginForm extends Model
 
     private $_user = false;
 
+    public function attributeLabels()
+    {
+        return [
+            'username' => '',
+            'password' => '',
+            'rememberMe' => '',
+        ];
+    }
+
 
     /**
      * @return array the validation rules.
@@ -43,7 +52,6 @@ class LoginForm extends Model
     {
         if (!$this->hasErrors()) {
             $user = $this->getUser();
-            //todo: починить валидацию
             if (!$user || !$user->validatePassword($this->password)) {
                 $this->addError($attribute, 'Incorrect username or password.');
             }

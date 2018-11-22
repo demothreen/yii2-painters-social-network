@@ -34,7 +34,7 @@ class Profile extends \yii\db\ActiveRecord
             [['name'], 'required'],
             [['name', 'about'], 'string'],
             [['count_pictures', 'last_download'], 'integer'],
-            [['id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['id' => 'id']],
+            [['id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['id' => 'id']],
         ];
     }
 
@@ -57,6 +57,6 @@ class Profile extends \yii\db\ActiveRecord
      */
     public function getId0()
     {
-        return $this->hasOne(User::className(), ['id' => 'id']);
+        return $this->hasOne(User::class, ['id' => 'id']);
     }
 }
