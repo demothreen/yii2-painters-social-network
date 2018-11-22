@@ -28,7 +28,7 @@ $this->title = 'Painters Social Network';
 </head>
 <?php $this->beginBody() ?>
 
-<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+<body class="fixed-nav sticky-footer bg-dark sidenav-toggled" id="page-top">
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <a class="navbar-brand" href="/"><?= $this->title ?></a>
@@ -45,34 +45,35 @@ $this->title = 'Painters Social Network';
                     <span class="nav-link-text">Home</span>
                 </a>
             </li>
-            <li class="nav-item" data-toggle="tooltip">
-                <a class="nav-link" href="<?= Url::to(['site/profile']) ?>">
-                    <i class="fa fa-fw fa-user-circle-o"></i>
-                    <span class="nav-link-text">My profile</span>
-                </a>
-            </li>
-            <li class="nav-item" data-toggle="tooltip">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents"
-                   data-parent="#exampleAccordion">
-                    <i class="fa fa-fw fa-wrench"></i>
-                    <span class="nav-link-text">My pictures</span>
-                </a>
-                <ul class="sidenav-second-level collapse" id="collapseComponents">
-                    <li>
-                        <a href="<?= Url::to(['site/own-pictures']) ?>">
-                            <i class="fa fa-picture-o"></i>
-                            <span class="nav-link-text">See own pictures</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?= Url::to(['site/load-pictures']) ?>">
-                            <i class="fa fa-download"></i>
-                            <span class="nav-link-text">Load new picture</span>
-                        </a>
-                    </li>
-
-                </ul>
-            </li>
+            <?php if (!Yii::$app->user->isGuest): ?>
+                <li class="nav-item" data-toggle="tooltip">
+                    <a class="nav-link" href="<?= Url::to(['site/profile']) ?>">
+                        <i class="fa fa-fw fa-user-circle-o"></i>
+                        <span class="nav-link-text">My profile</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-toggle="tooltip">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents"
+                       data-parent="#exampleAccordion">
+                        <i class="fa fa-fw fa-wrench"></i>
+                        <span class="nav-link-text">My pictures</span>
+                    </a>
+                    <ul class="sidenav-second-level collapse" id="collapseComponents">
+                        <li>
+                            <a href="<?= Url::to(['site/own-pictures']) ?>">
+                                <i class="fa fa-picture-o"></i>
+                                <span class="nav-link-text">See own pictures</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?= Url::to(['site/load-pictures']) ?>">
+                                <i class="fa fa-download"></i>
+                                <span class="nav-link-text">Load new picture</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            <?php endif; ?>
         </ul>
         <ul class="navbar-nav sidenav-toggler">
             <li class="nav-item">
@@ -165,7 +166,8 @@ $this->title = 'Painters Social Network';
             <div class="modal-body">You make me sad :(</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <button class="btn btn-primary" href="<?= Url::to(['site/logout']) ?>" data-method="post">Logout</button>
+                <button class="btn btn-primary" href="<?= Url::to(['site/logout']) ?>" data-method="post">Logout
+                </button>
             </div>
         </div>
     </div>
