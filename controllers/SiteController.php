@@ -126,12 +126,17 @@ class SiteController extends Controller
 
     public function actionProfile()
     {
-        $model = new Profile();
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
 
-        if ($model->validate()) {
+        $model = new Profile();
+        $model->username = Yii::$app->user->identity->username;
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            Yii::$app->session->setFlash('success', 'Данные успешно сохранены');
             $model->save();
         }
-//        $model->user = Yii::$app->user->identity;
+
         return $this->render('profile', ['model' => $model]);
     }
 }

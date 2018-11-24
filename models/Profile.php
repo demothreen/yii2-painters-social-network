@@ -10,8 +10,7 @@ use Yii;
  * @property int $id
  * @property string $name
  * @property string $about
- * @property int $count_pictures
- * @property int $last_download
+ * @property string $username
  *
  * @property User $id0
  */
@@ -31,9 +30,8 @@ class Profile extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'required'],
+            [['name', 'username'], 'required'],
             [['name', 'about'], 'string'],
-            [['count_pictures', 'last_download'], 'integer'],
             [['id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['id' => 'id']],
         ];
     }
@@ -47,8 +45,7 @@ class Profile extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => 'Your name',
             'about' => 'About',
-            'count_pictures' => 'Count Pictures',
-            'last_download' => 'Last Download',
+            'username' => 'Username'
         ];
     }
 

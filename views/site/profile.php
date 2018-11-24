@@ -7,8 +7,6 @@
 
 /* @var $model app\models\Profile */
 
-///* @var $model */
-
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 
@@ -22,6 +20,10 @@ $this->title = 'My Profile';
             </li>
         </ol>
     </div>
+    <?php
+    foreach (Yii::$app->session->getAllFlashes() as $key => $message) : ?>
+        <div class="alert alert-<?= $key ?> alert-dismissible" role="alert"><?= $message ?></div>
+    <?php endforeach; ?>
     <div class="col-md-6 offset-md-3">
         <div class="row">
             <div class="col-lg-6 offset-md-3">
@@ -33,19 +35,19 @@ $this->title = 'My Profile';
         </div>
 
         <?php $form = ActiveForm::begin([
-            'id' => 'login-form',
+            'id' => 'profile',
             'layout' => 'horizontal',
+            'action' => 'profile',
             'fieldConfig' => [
                 'template' => "{label}\n{beginWrapper}\n{input}\n{hint}\n{error}\n{endWrapper}",
             ],
         ]); ?>
         <?= $form->field($model, 'name')->textInput() ?>
-
-        <?= $form->field($model, 'about')->textInput() ?>
+        <?= $form->field($model, 'about')->textarea() ?>
 
         <div class="form-group">
             <div class="col-lg-offset-4 col-lg-4">
-                <?= Html::submitButton('Save', ['class' => 'btn btn-primary custom-btn', 'name' => 'login-button']) ?>
+                <?= Html::submitButton('Save', ['class' => 'btn btn-primary custom-btn', 'name' => '']) ?>
             </div>
         </div>
         <?php ActiveForm::end(); ?>
