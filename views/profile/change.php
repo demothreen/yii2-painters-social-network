@@ -33,7 +33,6 @@ $this->title = 'My Profile';
                 <hr class="mt-2">
             </div>
         </div>
-
         <?php $form = ActiveForm::begin([
             'id' => 'profile',
             'layout' => 'horizontal',

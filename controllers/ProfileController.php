@@ -19,8 +19,7 @@ class ProfileController extends Controller
      */
     public function actionIndex()
     {
-        $username = Yii::$app->user->identity->username;
-        $profile = Profile::findAll(['username' => $username]);
+        $profile = Profile::findAll(['username' => Yii::$app->user->identity->username]);
 
         return $this->render('index', [
             'profile' => $profile,

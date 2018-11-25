@@ -60,7 +60,7 @@ $this->title = 'Painters Social Network';
                     </a>
                     <ul class="sidenav-second-level collapse" id="collapseComponents">
                         <li>
-                            <a href="<?= Url::to(['site/own-pictures']) ?>">
+                            <a href="<?= Url::to(['picture/index']) ?>">
                                 <i class="fa fa-picture-o"></i>
                                 <span class="nav-link-text">See own pictures</span>
                             </a>

@@ -50,7 +50,7 @@ class Profile extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getId0()
+    public function getUser()
     {
         return $this->hasOne(User::class, ['id' => 'id']);
     }
