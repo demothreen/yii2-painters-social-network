@@ -47,7 +47,7 @@ $this->title = 'Painters Social Network';
             </li>
             <?php if (!Yii::$app->user->isGuest): ?>
                 <li class="nav-item" data-toggle="tooltip">
-                    <a class="nav-link" href="<?= Url::to(['site/profile']) ?>">
+                    <a class="nav-link" href="<?= Url::to(['profile/index']) ?>">
                         <i class="fa fa-fw fa-user-circle-o"></i>
                         <span class="nav-link-text">My profile</span>
                     </a>
@@ -87,8 +87,7 @@ $this->title = 'Painters Social Network';
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="modal" data-target="#logout">
-                        <i class="fa fa-fw fa-sign-out"></i>Logout
-                        ( <?= Yii::$app->user->identity->username ?> ) </a>
+                        <i class="fa fa-fw fa-sign-out"></i>Logout (<?= Yii::$app->user->identity->username ?>)</a>
                 </li>
             </ul>
         <?php else : ?>

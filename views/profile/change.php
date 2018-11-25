@@ -37,11 +37,12 @@ $this->title = 'My Profile';
         <?php $form = ActiveForm::begin([
             'id' => 'profile',
             'layout' => 'horizontal',
-            'action' => 'profile',
+            'action' => 'change',
             'fieldConfig' => [
                 'template' => "{label}\n{beginWrapper}\n{input}\n{hint}\n{error}\n{endWrapper}",
             ],
         ]); ?>
+        <?= $form->field($model, 'username', ['template' => '{input}'])->hiddenInput(['value' => Yii::$app->user->identity->username]) ?>
         <?= $form->field($model, 'name')->textInput() ?>
         <?= $form->field($model, 'about')->textarea() ?>
 

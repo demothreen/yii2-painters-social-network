@@ -9,7 +9,6 @@ use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
-use app\models\ContactForm;
 use app\models\SignupForm;
 
 /**
@@ -122,21 +121,5 @@ class SiteController extends Controller
         return $this->renderPartial('signup', [
             'model' => $model,
         ]);
-    }
-
-    public function actionProfile()
-    {
-        if (Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-
-        $model = new Profile();
-        $model->username = Yii::$app->user->identity->username;
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            Yii::$app->session->setFlash('success', 'Данные успешно сохранены');
-            $model->save();
-        }
-
-        return $this->render('profile', ['model' => $model]);
     }
 }

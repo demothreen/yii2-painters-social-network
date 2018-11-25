@@ -2,8 +2,6 @@
 
 namespace app\models;
 
-use Yii;
-
 /**
  * This is the model class for table "profile".
  *
@@ -32,7 +30,8 @@ class Profile extends \yii\db\ActiveRecord
         return [
             [['name', 'username'], 'required'],
             [['name', 'about'], 'string'],
-            [['id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['id' => 'id']],
+            [['id'], 'safe']
+//            [['id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['id' => 'id']],
         ];
     }
 
