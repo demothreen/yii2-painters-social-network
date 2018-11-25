@@ -42,7 +42,7 @@ class ProfileController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->save()) {
                 Yii::$app->session->setFlash('success', 'Данные успешно сохранены');
-                $this->goBack();
+                $this->redirect('index');
             } else
                 Yii::$app->session->setFlash('error', 'Что-то пошло не так');
         }
