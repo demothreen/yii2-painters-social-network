@@ -30,8 +30,7 @@ class Profile extends \yii\db\ActiveRecord
         return [
             [['name', 'username'], 'required'],
             [['name', 'about'], 'string'],
-            [['id'], 'safe']
-//            [['id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['id' => 'id']],
+            [['id'], 'integer']
         ];
     }
 

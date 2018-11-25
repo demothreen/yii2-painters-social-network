@@ -33,11 +33,12 @@ class ProfileController extends Controller
      */
     public function actionChange()
     {
-        $model = new Profile();
+        $model = Profile::find()->where(['username' => Yii::$app->user->identity->username])->one();
 
-        if (isset($_POST['Profile']['username'])) {
-            $model = Profile::find()->where(['username' => Yii::$app->user->identity->username])->one();
+        if (!$model) {
+            $model = new Profile();
         }
+
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->save()) {
                 Yii::$app->session->setFlash('success', 'Данные успешно сохранены');
