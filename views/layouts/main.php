@@ -53,25 +53,10 @@ $this->title = 'Painters Social Network';
                     </a>
                 </li>
                 <li class="nav-item" data-toggle="tooltip">
-                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents"
-                       data-parent="#exampleAccordion">
-                        <i class="fa fa-fw fa-wrench"></i>
+                    <a class="nav-link" href="<?= Url::to(['picture/index']) ?>">
+                        <i class="fa fa-fw fa-picture-o"></i>
                         <span class="nav-link-text">My pictures</span>
                     </a>
-                    <ul class="sidenav-second-level collapse" id="collapseComponents">
-                        <li>
-                            <a href="<?= Url::to(['picture/index']) ?>">
-                                <i class="fa fa-picture-o"></i>
-                                <span class="nav-link-text">See own pictures</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?= Url::to(['site/load-pictures']) ?>">
-                                <i class="fa fa-download"></i>
-                                <span class="nav-link-text">Load new picture</span>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
             <?php endif; ?>
         </ul>
