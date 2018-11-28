@@ -32,7 +32,7 @@ use yii\helpers\Html;
         <?php endif; ?>
         <div class="form-group">
             <div class="col-lg-offset-4 col-lg-4">
-                <?= Html::a('Add new picture', ["/picture/add"], ['class' => 'btn custom-btn btn-primary', 'style' => 'width:100%']) ?>
+                <?= Html::a('Add new picture', ["/picture/upload"], ['class' => 'btn custom-btn btn-primary', 'style' => 'width:100%']) ?>
             </div>
         </div>
     </div>

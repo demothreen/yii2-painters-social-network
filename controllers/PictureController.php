@@ -3,8 +3,11 @@
 namespace app\controllers;
 
 use app\models\Picture;
+use app\models\PictureUpload;
+use DateTimeZone;
 use Yii;
 use yii\web\Controller;
+use yii\web\UploadedFile;
 
 /**
  * Для вывода и записи картин пользователя
@@ -23,6 +26,22 @@ class PictureController extends Controller
 
         return $this->render('index', [
             'pictures' => $pictures,
+        ]);
+    }
+
+    public function actionUpload()
+    {
+        $model = new PictureUpload();
+
+        if (Yii::$app->request->isPost) {
+            $model->pictureFile = UploadedFile::getInstance($model, 'pictureFile');
+            if ($model->upload()) {
+                // file is uploaded successfully
+                return;
+            }
+        }
+        return $this->render('upload', [
+            'model' => $model
         ]);
     }
 

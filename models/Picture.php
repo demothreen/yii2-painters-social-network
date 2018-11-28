@@ -11,7 +11,6 @@ use Yii;
  * @property string $author
  * @property string $picture_name
  * @property string $insert_date
- * @property string $file_path
  */
 class Picture extends \yii\db\ActiveRecord
 {
@@ -30,7 +29,7 @@ class Picture extends \yii\db\ActiveRecord
     {
         return [
             [['author'], 'required'],
-            [['author', 'picture_name', 'insert_date', 'file_path'], 'string'],
+            [['author', 'picture_name', 'insert_date'], 'string'],
         ];
     }
 
@@ -44,7 +43,6 @@ class Picture extends \yii\db\ActiveRecord
             'author' => 'Author',
             'picture_name' => 'Picture Name',
             'insert_date' => 'Insert Date',
-            'file_path' => 'File path'
         ];
     }
 }
