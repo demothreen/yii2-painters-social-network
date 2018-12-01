@@ -23,9 +23,8 @@ use yii\helpers\Html;
         </div>
         <?php if (!empty($pictures)) : ?>
             <?php foreach ($pictures as $picture): ?>
-                <b>Name: </b> <?= Html::encode("{$picture->picture_name}") ?>
                 <br>
-                <?php Html::img($picture->file_path);?>
+                <b>Name: </b> <?= Html::encode("{$picture->picture_name}") ?>
                 <br>
                 <b>Date:</b> <?= Html::encode("{$picture->insert_date}") ?>
             <?php endforeach; ?>

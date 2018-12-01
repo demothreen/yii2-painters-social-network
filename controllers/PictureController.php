@@ -4,7 +4,6 @@ namespace app\controllers;
 
 use app\models\Picture;
 use app\models\PictureUpload;
-use DateTimeZone;
 use Yii;
 use yii\web\Controller;
 use yii\web\UploadedFile;
@@ -29,15 +28,18 @@ class PictureController extends Controller
         ]);
     }
 
+    /**
+     * Загрузка файла
+     * @return string
+     */
     public function actionUpload()
     {
         $model = new PictureUpload();
 
-        if (Yii::$app->request->isPost) {
+        if ($model->load(Yii::$app->request->post())) {
             $model->pictureFile = UploadedFile::getInstance($model, 'pictureFile');
             if ($model->upload()) {
-                // file is uploaded successfully
-                return;
+                $this->redirect('index');
             }
         }
         return $this->render('upload', [

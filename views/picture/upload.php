@@ -10,12 +10,17 @@ use yii\helpers\Html;
         <div class="row">
             <div class="col-lg-offset-4 col-lg-4" style="text-align: center">
                 <div class="mb-0 mt-0">
-                    <h1>Upload picture</h1>
+                    <h1>Загрузка изображения</h1>
                 </div>
                 <hr class="mt-2">
             </div>
         </div>
-        <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
+        <?php $form = ActiveForm::begin(['options' => [
+            'id' => 'picture',
+            'layout' => 'horizontal',
+            'action' => 'upload',
+            'enctype' => 'multipart/form-data'
+        ]]); ?>
         <?= $form->field($model, 'author', ['template' => '{input}'])->hiddenInput(['value' => Yii::$app->user->identity->username]) ?>
         <?= $form->field($model, 'picture_name')->textInput() ?>
         <?= $form->field($model, 'pictureFile')->fileInput() ?>
