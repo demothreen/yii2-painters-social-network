@@ -44,21 +44,25 @@ class PictureUpload extends Model
     /**
      * Загрузка файла
      * @return bool
+     * @throws \yii\base\Exception
      */
     public function upload()
     {
         if ($this->validate()) {
-            $this->insert_date = (new \DateTime())->format('d.m.Y H:i:s'); //todo: исправить таймзону и сделать загрузку в бд
-            $this->pictureFile->saveAs('uploads/' . $this->picture_name . '.' . $this->pictureFile->extension);
-            $attachment = new Picture();
-            $attachment->load($this->attributes, '');
-            if ($attachment->save()) {
-                return true;
+            $this->insert_date = (new \DateTime())->format('d.m.Y H:i:s');
+
+            if (!empty($this->pictureFile)) {
+                $this->pictureFile->saveAs("uploads/{$this->picture_name}.{$this->pictureFile->extension}");
+                $attachment = new Picture();
+                $attachment->load($this->attributes, '');
+                if ($attachment->save()) {
+                    return true;
+                } else {
+                    return false;
+                }
             } else {
                 return false;
             }
-        } else {
-            return false;
         }
     }
 }
